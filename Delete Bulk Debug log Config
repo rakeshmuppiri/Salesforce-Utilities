@@ -1,0 +1,17 @@
+// STEP 1 - Find all Delete links
+
+const deletes = [...document.querySelectorAll('a.actionLink')]
+    .filter(a => a.title.startsWith('Delete - Record'));
+
+console.log(`Found ${deletes.length} Delete links`);
+
+console.table(deletes.map(a => ({
+    text: a.textContent.trim(),
+    title: a.title,
+    href: a.getAttribute('href')
+})));
+
+// STEP 2 -  Delete them
+for (let i = 0; i < 23; i++) {
+    deletes[i].click();
+}
